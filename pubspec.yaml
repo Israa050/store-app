@@ -77,6 +77,8 @@ dependencies:
   #Customize Flutter's default white native splash screen with background color and splash image.
   flutter_native_splash: ^2.4.6
 
+  google_fonts: ^6.3.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
