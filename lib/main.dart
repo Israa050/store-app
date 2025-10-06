@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_app/core/routing/app_router.dart';
-import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/core/themes/colors/app_colors.dart';
 import 'package:store_app/features/onBoarding/presentation/screens/on_boarding_screen.dart';
 
@@ -29,8 +28,8 @@ class MyApp extends StatelessWidget {
           ),
         debugShowCheckedModeBanner: false,
         home: OnBoardingScreen(), 
-        initialRoute: Routes.onBoardingScreen, 
-        onGenerateRoute: appRouter.generateRoute,
+        //initialRoute: Routes.onBoardingScreen, 
+        //onGenerateRoute: appRouter.generateRoute,
       ),
     );
   }

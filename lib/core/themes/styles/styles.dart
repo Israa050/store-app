@@ -61,3 +61,34 @@
 //       base(size: 12, fontWeight: FontWeightHelper.bold, color: AppColors.light);                                       
 
 // }
+
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:store_app/core/themes/colors/app_colors.dart';
+
+
+class AppTextStyles {
+  static TextStyle heading = GoogleFonts.openSans(
+    fontSize: 22,
+    fontWeight: FontWeight.w700,
+    color: AppColors.text,
+  );
+
+  static TextStyle label = GoogleFonts.openSans(
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: AppColors.muted,
+  );
+
+  static TextStyle input = GoogleFonts.openSans(
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    color: AppColors.text,
+  );
+
+  static TextStyle button = GoogleFonts.openSans(
+    fontSize: 16,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+}
