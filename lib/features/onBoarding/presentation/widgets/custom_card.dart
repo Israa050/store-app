@@ -9,6 +9,7 @@ class CustomCard extends StatelessWidget {
     return Container(
       height: 244,
       width: 370,
+      margin: EdgeInsets.only(bottom: 15),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20),

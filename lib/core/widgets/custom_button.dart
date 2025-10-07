@@ -26,8 +26,8 @@ class CustomButton extends StatelessWidget {
         splashColor: Colors.white.withValues(alpha:  0.2), // ✅ splash effect over whole area
         highlightColor: Colors.white.withValues(alpha: 0.1), // ✅ soft press feedback
         child: Container(
-          width: double.infinity, // ✅ makes splash cover full width
-          padding: const EdgeInsets.symmetric(vertical: 14),
+          width: double.infinity, // ✅ makes splash cover full widt
+          padding: const EdgeInsets.symmetric(vertical: 10),
           alignment: Alignment.center,
           child: Text(
             text,

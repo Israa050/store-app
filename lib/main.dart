@@ -2,9 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_app/core/routing/app_router.dart';
 import 'package:store_app/core/themes/colors/app_colors.dart';
+import 'package:store_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:store_app/features/auth/presentation/screens/signup_screen.dart';
+import 'package:store_app/features/auth/presentation/screens/verification_screen.dart';
 import 'package:store_app/features/onBoarding/presentation/screens/on_boarding_screen.dart';
 
 void main() async{
+
+  WidgetsFlutterBinding.ensureInitialized();
 
   await ScreenUtil.ensureScreenSize();
   runApp(MyApp(appRouter: AppRouter(),));
