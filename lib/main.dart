@@ -1,17 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:store_app/core/di/dependency_injection.dart';
+import 'package:store_app/core/helpers/constants.dart';
+import 'package:store_app/core/helpers/extensions.dart';
+import 'package:store_app/core/helpers/shared_pref_helper.dart';
 import 'package:store_app/core/routing/app_router.dart';
+import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/core/themes/colors/app_colors.dart';
-import 'package:store_app/features/auth/presentation/screens/login_screen.dart';
-import 'package:store_app/features/auth/presentation/screens/signup_screen.dart';
-import 'package:store_app/features/auth/presentation/screens/verification_screen.dart';
-import 'package:store_app/features/onBoarding/presentation/screens/on_boarding_screen.dart';
+import 'package:store_app/features/home/presentation/screens/home_screen.dart';
 
 void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  await ScreenUtil.ensureScreenSize();
+ // setupGetIt();
+  //await ScreenUtil.ensureScreenSize();
+  //await checkIfLoggedInUser();
+
+  //SharedPrefHelper.clearAllSecuredData();
+
   runApp(MyApp(appRouter: AppRouter(),));
 }
 
@@ -32,10 +39,20 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
           ),
         debugShowCheckedModeBanner: false,
-        home: OnBoardingScreen(), 
-        //initialRoute: Routes.onBoardingScreen, 
+        home: HomeScreen(), 
+        //initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.onBoardingScreen, 
         //onGenerateRoute: appRouter.generateRoute,
       ),
     );
+  }
+}
+
+checkIfLoggedInUser() async {
+  String? userToken =
+      await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken);
+  if (!userToken.isNullOrEmpty()) {
+    isLoggedInUser = true;
+  } else {
+    isLoggedInUser = false;
   }
 }

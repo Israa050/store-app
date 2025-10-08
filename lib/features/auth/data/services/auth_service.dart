@@ -1,12 +1,16 @@
 
 
 
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:store_app/core/networking/api_constants.dart';
 import 'package:store_app/features/auth/data/models/login_request_body.dart';
 import 'package:store_app/features/auth/data/models/login_response.dart';
+import 'package:store_app/features/auth/data/models/register_request_body.dart';
+import 'package:store_app/features/auth/data/models/verification_request_body.dart';
 
 part 'auth_service.g.dart';
 
@@ -22,7 +26,14 @@ abstract class AuthService {
     @Body() LoginRequestBody loginRequestBody,
   );
 
-  
+   @POST(ApiConstants.signup)
+  Future<void> signUp(
+    @Body() RegisterRequestBody signUpRequestBody,
+  );
 
+   @POST(ApiConstants.verifyEmail)
+  Future<void> verifyAccount(
+    @Body() VerificationRequestBody verificationRequestBody,
+  );
 
 }

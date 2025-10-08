@@ -78,6 +78,10 @@ dependencies:
   flutter_native_splash: ^2.4.6
 
   google_fonts: ^6.3.2
+  # Flutter plugin for reading and writing simple key-value pairs. 
+  #shared_preferences: ^2.5.3
+  # Flutter Secure Storage provides API to store data in secure storage.
+  flutter_secure_storage: ^9.2.4
 
 dev_dependencies:
   flutter_test:
@@ -106,6 +110,7 @@ flutter:
   assets:
       - assets/images/onBoarding.png
       - assets/images/
+      - assets/svgs/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
