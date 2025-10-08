@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_service.dart';
+part of 'api_service.dart';
 
 // dart format off
 
@@ -10,8 +10,8 @@ part of 'auth_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations,unused_element_parameter
 
-class _AuthService implements AuthService {
-  _AuthService(this._dio, {this.baseUrl, this.errorLogger}) {
+class _ApiService implements ApiService {
+  _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://accessories-eshop.runasp.net/api/';
   }
 
@@ -22,45 +22,16 @@ class _AuthService implements AuthService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<LoginResponse> login(LoginRequestBody loginRequestBody) async {
+  Future<void> getProducts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(loginRequestBody.toJson());
-    final _options = _setStreamType<LoginResponse>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
-          .compose(
-            _dio.options,
-            'auth/login',
-            queryParameters: queryParameters,
-            data: _data,
-          )
-          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
-    );
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late LoginResponse _value;
-    try {
-      _value = LoginResponse.fromJson(_result.data!);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<void> signUp(RegisterRequestBody signUpRequestBody) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(signUpRequestBody.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'auth/register',
+            'products',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -70,19 +41,35 @@ class _AuthService implements AuthService {
   }
 
   @override
-  Future<void> verifyAccount(
-    VerificationRequestBody verificationRequestBody,
-  ) async {
+  Future<void> getCategories() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(verificationRequestBody.toJson());
+    const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<void>(
-      Options(method: 'POST', headers: _headers, extra: _extra)
+      Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            'auth/verify-email',
+            'categories',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    await _dio.fetch<void>(_options);
+  }
+
+  @override
+  Future<void> getOffers() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<void>(
+      Options(method: 'GET', headers: _headers, extra: _extra)
+          .compose(
+            _dio.options,
+            'offers',
             queryParameters: queryParameters,
             data: _data,
           )

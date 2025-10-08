@@ -1,8 +1,12 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/core/themes/colors/app_colors.dart';
 import 'package:store_app/core/themes/styles/styles.dart';
 import 'package:store_app/core/util/validators.dart';
+import 'package:store_app/core/widgets/error_dialog.dart';
+import 'package:store_app/core/widgets/success_dialog.dart';
+import 'package:store_app/features/auth/logic/cubit/auth_cubit.dart';
 import '../../../../core/widgets/custom_button.dart';
 import '../../../../core/widgets/custom_text_field.dart';
 import '../../../../core/widgets/custom_switch.dart';
@@ -31,12 +35,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _submit() {
     if (_formKey.currentState?.validate() ?? false) {
-      // context.read<AuthCubit>().signUp( // using signUp temporarily, you’ll replace with login()
-      //       username: '',
-      //       email: _email.text.trim(),
-      //       password: _password.text,
-      //       remember: remember,
-      //     );
+      context.read<AuthCubit>().login(
+             _email.text.trim(),
+             _password.text,
+          );
     }
   }
 
@@ -46,18 +48,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return Scaffold(
       body: SafeArea(
-        // child: BlocListener<AuthCubit, AuthState>(
-        //   listener: (context, state) {
-        //     if (state is AuthSuccess) {
-        //       ScaffoldMessenger.of(context).showSnackBar(
-        //         const SnackBar(content: Text('Login succeeded (UI demo)')),
-        //       );
-        //     } else if (state is AuthFailure) {
-        //       ScaffoldMessenger.of(context).showSnackBar(
-        //         SnackBar(content: Text(state.message)),
-        //       );
-        //     }
-        //   },
+        child: BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            if (state is LoginState) {
+              showSuccessDialog(context);
+            } else if (state is ErrorState) {
+              showFailureDialog(context,message: state.error.errors[0]);
+            }
+          },
           child: Column(
             children: [
               // Header
@@ -193,6 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
-      );
+      )
+    );
   }
 }

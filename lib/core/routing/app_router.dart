@@ -1,9 +1,12 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/core/di/dependency_injection.dart';
 import 'package:store_app/core/routing/routes.dart';
+import 'package:store_app/features/auth/logic/cubit/auth_cubit.dart';
 import 'package:store_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:store_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:store_app/features/auth/presentation/screens/verification_screen.dart';
+import 'package:store_app/features/home/presentation/screens/home_screen.dart';
 import 'package:store_app/features/onBoarding/presentation/screens/on_boarding_screen.dart';
 
 class AppRouter {
@@ -13,18 +16,23 @@ class AppRouter {
 
     switch (settings.name) {
       case Routes.onBoardingScreen:
-        return MaterialPageRoute(
-          builder: (_) => const OnBoardingScreen(),
-        );
+        return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case Routes.loginScreen:
-         return MaterialPageRoute(builder: (_)=> const LoginScreen());
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<AuthCubit>(),
+            child: const LoginScreen(),
+          ),
+        );
 
       case Routes.signUpScreen:
-         return MaterialPageRoute(builder: (_)=> const SignUpScreen());
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
 
       case Routes.verifyAccount:
-          return MaterialPageRoute(builder: (_)=> const VerificationScreen());        
+        return MaterialPageRoute(builder: (_) => const VerificationScreen());
 
+      case Routes.homeScreen:
+         return MaterialPageRoute(builder: (_)=>  HomeScreen());  
     }
     return null;
   }

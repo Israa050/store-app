@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:store_app/core/helpers/extensions.dart';
+import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/features/onBoarding/presentation/widgets/custom_button.dart';
 
 class CustomCard extends StatelessWidget {
@@ -43,9 +45,12 @@ class CustomCard extends StatelessWidget {
             ],
           ),
 
-          Text(
-            'Skip',
-            style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500,color: Color(0xff8F959E,),),
+          InkWell(
+            onTap: () => context.pushNamed(Routes.loginScreen),
+            child: Text(
+              'Skip',
+              style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500,color: Color(0xff8F959E,),),
+            ),
           ),
 
         ],
