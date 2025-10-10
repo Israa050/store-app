@@ -8,16 +8,18 @@ import 'package:store_app/core/routing/app_router.dart';
 import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/core/themes/colors/app_colors.dart';
 import 'package:store_app/features/home/presentation/screens/home_screen.dart';
+import 'package:store_app/features/home/presentation/widgets/product_card.dart';
 
 void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
 
- // setupGetIt();
-  //await ScreenUtil.ensureScreenSize();
-  //await checkIfLoggedInUser();
+  setupGetIt();
+  await ScreenUtil.ensureScreenSize();
+  await checkIfLoggedInUser();
 
   //SharedPrefHelper.clearAllSecuredData();
+
 
   runApp(MyApp(appRouter: AppRouter(),));
 }
@@ -39,9 +41,9 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
           ),
         debugShowCheckedModeBanner: false,
-        home: HomeScreen(), 
-        //initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.onBoardingScreen, 
-        //onGenerateRoute: appRouter.generateRoute,
+        //home: Test(), 
+        initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.onBoardingScreen, 
+        onGenerateRoute: appRouter.generateRoute,
       ),
     );
   }
@@ -54,5 +56,21 @@ checkIfLoggedInUser() async {
     isLoggedInUser = true;
   } else {
     isLoggedInUser = false;
+  }
+}
+
+
+class Test extends StatelessWidget {
+  const Test({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView(
+        children: [
+          ProductCard(),
+        ],
+      ),
+    );
   }
 }

@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:store_app/core/helpers/extensions.dart';
+import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/core/themes/colors/app_colors.dart';
 import 'package:store_app/core/themes/styles/styles.dart';
 import 'package:store_app/core/util/validators.dart';
@@ -39,6 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
              _email.text.trim(),
              _password.text,
           );
+
     }
   }
 
@@ -51,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: BlocListener<AuthCubit, AuthState>(
           listener: (context, state) {
             if (state is LoginState) {
-              showSuccessDialog(context);
+          context.pushReplacementNamed(Routes.homeScreen);
             } else if (state is ErrorState) {
               showFailureDialog(context,message: state.error.errors[0]);
             }

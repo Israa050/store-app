@@ -2,9 +2,13 @@
 
 
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 import 'package:store_app/core/networking/api_constants.dart';
+import 'package:store_app/features/home/data/models/category.dart';
+import 'package:store_app/features/home/data/models/offer.dart';
+import 'package:store_app/features/home/data/models/product.dart';
 
 
 part 'api_service.g.dart';
@@ -17,13 +21,13 @@ abstract class ApiService {
 
 
   @GET(ApiConstants.products)
-  Future<void> getProducts();
+  Future<Products> getProducts();
 
   @GET(ApiConstants.categories)
-  Future<void> getCategories();
+  Future<CategoryModel> getCategories();
 
   @GET(ApiConstants.offers)
-  Future<void> getOffers();
+  Future<Offers> getOffers();
 
 
 }

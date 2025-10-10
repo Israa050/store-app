@@ -6,6 +6,7 @@ import 'package:store_app/features/auth/logic/cubit/auth_cubit.dart';
 import 'package:store_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:store_app/features/auth/presentation/screens/signup_screen.dart';
 import 'package:store_app/features/auth/presentation/screens/verification_screen.dart';
+import 'package:store_app/features/home/logic/cubit/home_cubit.dart';
 import 'package:store_app/features/home/presentation/screens/home_screen.dart';
 import 'package:store_app/features/onBoarding/presentation/screens/on_boarding_screen.dart';
 
@@ -32,7 +33,12 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const VerificationScreen());
 
       case Routes.homeScreen:
-         return MaterialPageRoute(builder: (_)=>  HomeScreen());  
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<HomeCubit>(),
+            child: HomeScreen(),
+          ),
+        );
     }
     return null;
   }
