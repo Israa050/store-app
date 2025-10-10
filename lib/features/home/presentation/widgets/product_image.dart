@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductImage extends StatelessWidget {
   final String? imageUrl;
-  const ProductImage({super.key,required this.imageUrl});
+  const ProductImage({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -14,17 +14,33 @@ class ProductImage extends StatelessWidget {
       width: 160.w,
       child: Stack(
         children: [
-          // Background image container
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              image:  DecorationImage(
-                image: 
-                CachedNetworkImageProvider(imageUrl?? ''),
-                 //AssetImage('assets/images/product.png'),
-                fit: BoxFit.cover,
-              ),
-            ),
+          // CachedNetworkImage to handle image loading and error states
+          CachedNetworkImage(
+            imageUrl: imageUrl ?? '',
+            fit: BoxFit.cover,
+            imageBuilder: (context, imageProvider) {
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: imageProvider,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              );
+            },
+            errorWidget: (context, url, error) {
+              // This widget is shown when the image fails to load (e.g., corrupted URL)
+              return Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: AssetImage('assets/images/fast-cart.png'), // Fallback image
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              );
+            },
           ),
 
           // SVG icon positioned in top-right corner

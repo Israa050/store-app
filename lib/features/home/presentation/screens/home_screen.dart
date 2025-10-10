@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:store_app/core/widgets/error_dialog.dart';
 import 'package:store_app/core/widgets/success_dialog.dart';
 import 'package:store_app/features/home/logic/cubit/home_cubit.dart';
+import 'package:store_app/features/home/presentation/screens/bottom_navigation.dart';
 import 'package:store_app/features/home/presentation/widgets/categories_section.dart';
 import 'package:store_app/features/home/presentation/widgets/loading_widget.dart';
 import 'package:store_app/features/home/presentation/widgets/offers_carousel.dart';
@@ -93,6 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      bottomNavigationBar: CustomButtomNavigation(),
     );
   }
 }

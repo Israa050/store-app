@@ -18,9 +18,9 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
         
-            Expanded(flex: 4, child: ProductImage(imageUrl:product?.coverPictureUrl??
-             'https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/191aec31-c323-43a9-9441-33a99630980f/NKB+B+NSW+FUTURA+PROPUS+SET.png',)),
-        
+            Expanded(flex: 4, child: ProductImage(imageUrl:product?.coverPictureUrl??'')),
+
+
             Text(
               product?.name??
               'Nike Sportswear Club\n Fleece',

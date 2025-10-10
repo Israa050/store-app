@@ -1,8 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:store_app/features/home/presentation/widgets/categories_loading.dart';
-import 'package:store_app/features/home/presentation/widgets/offers_header.dart';
 import 'package:store_app/features/home/presentation/widgets/offers_loading.dart';
 import 'package:store_app/features/home/presentation/widgets/products_loading.dart';
 

@@ -7,16 +7,21 @@ import 'package:store_app/core/helpers/shared_pref_helper.dart';
 import 'package:store_app/core/routing/app_router.dart';
 import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/core/themes/colors/app_colors.dart';
+import 'package:store_app/features/cart/presentation/screens/cart_screen.dart';
 import 'package:store_app/features/home/presentation/screens/home_screen.dart';
 import 'package:store_app/features/home/presentation/widgets/product_card.dart';
+import 'package:store_app/features/product_details/presentation/screens/product_details_screen.dart';
+import 'package:store_app/features/product_details/presentation/widgets/product_details_shimmer.dart';
+import 'package:store_app/features/review/presentation/screens/reviews_screen.dart';
+import 'package:store_app/features/review/presentation/widgets/reviews_shimmer.dart';
 
 void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  setupGetIt();
+  //setupGetIt();
   await ScreenUtil.ensureScreenSize();
-  await checkIfLoggedInUser();
+  //await checkIfLoggedInUser();
 
   //SharedPrefHelper.clearAllSecuredData();
 
@@ -41,9 +46,9 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
           ),
         debugShowCheckedModeBanner: false,
-        //home: Test(), 
-        initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.onBoardingScreen, 
-        onGenerateRoute: appRouter.generateRoute,
+        home: CartScreen(), 
+        //initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.onBoardingScreen, 
+        //onGenerateRoute: appRouter.generateRoute,
       ),
     );
   }
@@ -66,11 +71,8 @@ class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          ProductCard(),
-        ],
-      ),
+      body: ReviewsShimmer()
+      
     );
   }
 }
