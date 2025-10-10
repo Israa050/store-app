@@ -127,7 +127,9 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 **Israa Essa**  
 💼 Mobile Application Developer
+
 🌐 Portfolio: [https://www.linkedin.com/in/israa-essa-3b5644384]  
+
 💻 GitHub: [Israa050]  
 
 ---
