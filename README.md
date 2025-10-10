@@ -123,12 +123,12 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 ---
 
-### 👨‍🎨 Author
+## 👨‍💻 Author  
 
-Developed by: [Your Name]
+**Israa Essa**  
 💼 Mobile Application Developer
-📧 [your.email@example.com]
-🌐 [yourportfolio.com]
+🌐 Portfolio: [https://www.linkedin.com/in/israa-essa-3b5644384]  
+💻 GitHub: [Israa050]  
 
 ---
 
