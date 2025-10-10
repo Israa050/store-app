@@ -93,18 +93,18 @@ It’s designed to be **easy to extend**, **test**, and **maintain**.
    cd flutter_ecommerce_app
 
 2. **Install dependencies**
-```bash
+  ```bash
    flutter pub get
-```
+  ```
 3. **Run The app**
-```bash
+  ```bash
    flutter run
-```
+  ```
 
 4. **Generate Retrofit files**
-```bash
-flutter pub run build_runner build --delete-conflicting-outputs
-```
+  ```bash
+    flutter pub run build_runner build --delete-conflicting-outputs
+  ```
 
 --- 
 
