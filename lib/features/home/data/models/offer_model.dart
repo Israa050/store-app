@@ -1,14 +1,26 @@
 
+
+import 'package:json_annotation/json_annotation.dart';
+
+part 'offer_model.g.dart';
+
+@JsonSerializable()
 class OfferModel {
-  final String title;
-  final String subtitle;
-  final String highlight;
-  final String imageUrl;
+
+  final String id;
+  final String name;
+  final String description;
+  final String coverUrl;
+  final String createdAt;
 
   OfferModel({
-    required this.title,
-    required this.subtitle,
-    required this.highlight,
-    required this.imageUrl,
+    required this.id,
+    required this.name,
+    required this.description,
+    required this.coverUrl,
+    required this.createdAt
   });
+
+   factory OfferModel.fromJson(Map<String, dynamic> json) =>
+      _$OfferModelFromJson(json);
 }
