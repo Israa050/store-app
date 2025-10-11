@@ -28,14 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    getProducts();
+    getData();
   }
 
-  void getProducts()async{
-   // await context.read<HomeCubit>().getProducts();
+  void getData()async{
     await context.read<HomeCubit>().getHomeData();
-   // await context.read<HomeCubit>().getCategories();
-    //await context.read<HomeCubit>().getOffers();
+
   }
 
 
@@ -55,43 +53,31 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: SingleChildScrollView(
-        child: BlocListener<HomeCubit, HomeState>(
-          listener: (context, state) {
-            if(state is OffersSuccess){
-              showSuccessDialog(context);
-            }
-            else if( state is Faliuare){
-              showFailureDialog(context,message: state.error.errors[0]);
-            }
-          },
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              WelcomHeader(),
-              SearchRowWidget(),
-              BlocBuilder<HomeCubit, HomeState>(
-                builder: (context, state) {
-                  if(state is Success){
-                    return Column(
-                      children: [
-                        OffersCarousel(offers: state.offers),
-                        CategoriesSection(categories: state.category,),
-                        ProductsSection(products: state.products,),
-
-                        
-                      ],
-                    );
-                  }
-                  else if(state is Faliuare){
-                    return SizedBox();
-                  }
-                  else{
-                    return LoadingWidget();
-                  }
-                },
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            WelcomHeader(),
+            SearchRowWidget(),
+            BlocBuilder<HomeCubit, HomeState>(
+              builder: (context, state) {
+                if(state is Success){
+                  return Column(
+                    children: [
+                      OffersCarousel(offers: state.offers),
+                      CategoriesSection(categories: state.category,),
+                      ProductsSection(products: state.products,),
+                    ],
+                  );
+                }
+                else if(state is Faliuare){
+                  return SizedBox();
+                }
+                else{
+                  return LoadingWidget();
+                }
+              },
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: CustomButtomNavigation(),

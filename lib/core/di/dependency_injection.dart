@@ -8,6 +8,10 @@ import 'package:store_app/features/auth/data/services/auth_service.dart';
 import 'package:store_app/features/auth/logic/cubit/auth_cubit.dart';
 import 'package:store_app/features/home/data/repos/home_repo.dart';
 import 'package:store_app/features/home/logic/cubit/home_cubit.dart';
+import 'package:store_app/features/product_details/data/repos/product_repo.dart';
+import 'package:store_app/features/product_details/logic/cubit/product_cubit.dart';
+import 'package:store_app/features/review/data/repos/product_review_repo.dart';
+import 'package:store_app/features/review/logic/cubit/product_reviews_cubit.dart';
 
 
 final getIt = GetIt.instance;
@@ -29,4 +33,10 @@ Future<void> setupGetIt() async {
   getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
   getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(apiService: getIt()));
   getIt.registerFactory<HomeCubit>(() => HomeCubit(homeRepo: getIt()));
+
+  getIt.registerLazySingleton<ProductRepo>(() => ProductRepo(apiService: getIt()));
+  getIt.registerFactory<ProductCubit>(() => ProductCubit(productRepo: getIt()));
+
+   getIt.registerLazySingleton<ProductReviewRepo>(() => ProductReviewRepo(apiService: getIt()));
+  getIt.registerFactory<ProductReviewsCubit>(() => ProductReviewsCubit(productReviewRepo: getIt()));
 }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,24 +51,49 @@ class CategoryTile extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildImage(String? imageUrl) {
+  if (imageUrl == null || imageUrl.isEmpty) {
+    return _placeholderImage();
+  }
+
+  if (imageUrl.toLowerCase().endsWith('.svg')) {
+    return _buildSvg(imageUrl);
+  } else {
+    return CachedNetworkImage(
+      imageUrl: imageUrl,
+      placeholder: (context, url) => Center(child: CircularProgressIndicator()),
+      errorWidget: (context, url, error) => _placeholderImage(),
+      fit: BoxFit.contain,
+    );
+  }
+}
+
 
   // Method to handle SVG loading with error fallback
-  Widget _buildSvg(String? svgUrl) {
-    return svgUrl != null && svgUrl.isNotEmpty
-        ? SvgPicture.network(
-            svgUrl,
-            placeholderBuilder: (context) => Center(
-              child: CircularProgressIndicator(), // Show loading while fetching
-            ),
-            // Custom error handling
-            errorBuilder: (context, error, stackTrace) {
-              return Center(
-            child: Image.asset('assets/images/placeholder.png')
-              );
-            },
-          )
-        : Center(
-            child: Image.asset('assets/images/placeholder.png')
-          ); // Show a broken image icon if URL is empty or null
+Widget _buildSvg(String? svgUrl) {
+  try{
+    if (svgUrl == null || svgUrl.isEmpty) {
+    return _placeholderImage();
   }
+  return SvgPicture.network(
+    svgUrl,
+    fit: BoxFit.contain,
+    errorBuilder: (context, error, stackTrace) {
+      debugPrint("SVG Load Error: $error");
+      return _placeholderImage();
+    },
+  );
+  }catch(e){
+     return _placeholderImage();
+  }
+ 
+}
+
+Widget _placeholderImage() {
+  return Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Image.asset('assets/images/photo.png', fit: BoxFit.contain),
+  );
 }

@@ -35,8 +35,8 @@ class ProductImage extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                    image: AssetImage('assets/images/fast-cart.png'), // Fallback image
-                    fit: BoxFit.cover,
+                    image: AssetImage('assets/images/photo.png'), // Fallback image
+                    fit: BoxFit.contain,
                   ),
                 ),
               );
