@@ -16,9 +16,9 @@ void main() async{
 
   setupGetIt();
   await ScreenUtil.ensureScreenSize();
-  await checkIfLoggedInUser();
+  //await checkIfLoggedInUser();
 
-  //SharedPrefHelper.clearAllSecuredData();
+  SharedPrefHelper.clearAllSecuredData();
 
 
   runApp(MyApp(appRouter: AppRouter(),));
@@ -41,7 +41,6 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
           ),
         debugShowCheckedModeBanner: false,
-        home: CartScreen(), 
         initialRoute: isLoggedInUser ? Routes.homeScreen : Routes.onBoardingScreen, 
         onGenerateRoute: appRouter.generateRoute,
       ),
@@ -56,18 +55,5 @@ checkIfLoggedInUser() async {
     isLoggedInUser = true;
   } else {
     isLoggedInUser = false;
-  }
-}
-
-
-class Test extends StatelessWidget {
-  const Test({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: ReviewsShimmer()
-      
-    );
   }
 }
