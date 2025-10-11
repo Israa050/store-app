@@ -73,7 +73,6 @@ It’s designed to be **easy to extend**, **test**, and **maintain**.
 ## 🎥 Demo
 
 > 📱 *Coming soon...*  
-> You can add a short demo GIF or video showing main app flows here.
 
 ---
 
