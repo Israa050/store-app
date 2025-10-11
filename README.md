@@ -67,8 +67,6 @@ It’s designed to be **easy to extend**, **test**, and **maintain**.
 |:------:|:-----------:|:-----:|:----:|:--------:|:--------:|
 | ![Splash](assets/images/splash.png) | ![OnBoarding](assets/images/on_boarding.png) | ![Login](assets/images/login.png) | ![Home](assets/images/products_home.png) | ![Details](assets/images/details.png) | ![Reviews](assets/images/reviews.png) |
 
-> 📸 *Add your screenshots inside `assets/images/` and update the file names or paths above if needed.*
-
 
 ## 🎥 Demo
 
