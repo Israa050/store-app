@@ -9,6 +9,10 @@ import 'package:store_app/features/auth/presentation/screens/verification_screen
 import 'package:store_app/features/home/logic/cubit/home_cubit.dart';
 import 'package:store_app/features/home/presentation/screens/home_screen.dart';
 import 'package:store_app/features/onBoarding/presentation/screens/on_boarding_screen.dart';
+import 'package:store_app/features/product_details/logic/cubit/product_cubit.dart';
+import 'package:store_app/features/product_details/presentation/screens/product_details_screen.dart';
+import 'package:store_app/features/review/logic/cubit/product_reviews_cubit.dart';
+import 'package:store_app/features/review/presentation/screens/reviews_screen.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
@@ -39,6 +43,26 @@ class AppRouter {
             child: HomeScreen(),
           ),
         );
+      case Routes.productDetails:
+        final id = settings.arguments;
+        if (id is String) {
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) => getIt<ProductCubit>(),
+              child: ProductDetailsScreen(id: id),
+            ),
+          );
+        }
+      case Routes.review:
+        final id = settings.arguments;
+           if (id is String) {
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<ProductReviewsCubit>(),
+            child: ReviewsScreen(id: id,),
+          ),
+        );
+    }
     }
     return null;
   }

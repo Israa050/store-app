@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:store_app/core/helpers/extensions.dart';
+import 'package:store_app/core/routing/routes.dart';
 import 'package:store_app/features/home/data/models/product.dart';
 import 'package:store_app/features/home/presentation/widgets/product_image.dart';
 
@@ -18,7 +20,12 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
         
-            Expanded(flex: 4, child: ProductImage(imageUrl:product?.coverPictureUrl??'')),
+            Expanded(flex: 4, child: InkWell(
+              onTap: () {
+                context.pushNamed(Routes.productDetails,arguments: product?.id);
+              },
+              child: ProductImage(
+                imageUrl:product?.coverPictureUrl??'',),),),
 
 
             Text(

@@ -1,14 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:store_app/core/widgets/app_icon_button.dart';
-import 'package:store_app/core/widgets/primary_button.dart';
 import 'package:store_app/core/widgets/rating_stars.dart';
+import 'package:store_app/features/review/data/repos/product_review_repo.dart';
 import 'package:store_app/features/review/presentation/widgets/review_tile.dart';
 
 
-class ReviewsScreen extends StatelessWidget {
+class ReviewsScreen extends StatefulWidget {
   static const route = '/reviews';
-  const ReviewsScreen({super.key});
+  String id;
+   ReviewsScreen({super.key,required this.id});
 
+  @override
+  State<ReviewsScreen> createState() => _ReviewsScreenState();
+}
+
+class _ReviewsScreenState extends State<ReviewsScreen> {
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    getReviews();
+  }
+
+  void getReviews()async{
+    await context.read<ProductReviewRepo>().getProductReviews(widget.id);
+  }
   @override
   Widget build(BuildContext context) {
     final reviews = List.generate(8, (i) {
@@ -75,14 +94,14 @@ class _Header extends StatelessWidget {
           style: const TextStyle(fontWeight: FontWeight.w700),
         ),
         const Spacer(),
-        SizedBox(
-          width: 130,
-          child: PrimaryButton(
-            label: 'Add Review',
-            leading: const Icon(Icons.add_rounded, size: 18),
-            onPressed: () {},
-          ),
-        ),
+        // SizedBox(
+        //   width: 130,
+        //   child: PrimaryButton(
+        //     label: 'Add Review',
+        //     leading: const Icon(Icons.add_rounded, size: 18),
+        //     onPressed: () {},
+        //   ),
+        // ),
       ],
     );
   }

@@ -8,5 +8,6 @@ class ApiConstants {
   static const String verifyEmail = "auth/verify-email";
   static const String categories = "categories";
   static const String offers = "offers";
+  static const String reviews = "reviews";
   
 }

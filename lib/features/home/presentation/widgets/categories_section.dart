@@ -16,12 +16,13 @@ class CategoriesSection extends StatelessWidget {
       child: Column(
         children: [
           categoriesHeader(context),
+          
       
           SizedBox(
             height: 50,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: categories.categories?.length,
+              itemCount: 5,
               itemBuilder: (context,index){
                 return CategoryTile(categories: categories.categories![index],);
               },

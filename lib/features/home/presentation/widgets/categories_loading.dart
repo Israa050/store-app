@@ -9,21 +9,24 @@ class CategoriesLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        categoriesHeader(context),
-
-        SizedBox(
-          height: 50,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: 5,
-            itemBuilder: (context, index) {
-              return loadingTile();
-            },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 15),
+      child: Column(
+        children: [
+          categoriesHeader(context),
+      
+          SizedBox(
+            height: 50,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return loadingTile();
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
