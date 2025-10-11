@@ -63,13 +63,12 @@ It’s designed to be **easy to extend**, **test**, and **maintain**.
 
 ## 🖼️ Screenshots
 
-| Login | Home | Product Details | Cart |
-|:-----:|:----:|:----------------:|:----:|
-| ![Login](assets/screenshots/login.png) | ![Home](assets/screenshots/home.png) | ![Details](assets/screenshots/details.png) | ![Cart](assets/screenshots/cart.png) |
+| Splash | OnBoarding | Login | Home | Details | Reviews |
+|:------:|:-----------:|:-----:|:----:|:--------:|:--------:|
+| ![Splash](assets/images/splash.png) | ![OnBoarding](assets/images/on_boarding.png) | ![Login](assets/images/login.png) | ![Home](assets/images/products_home.png) | ![Details](assets/images/details.png) | ![Reviews](assets/images/reviews.png) |
 
-> 📸 *Add your screenshots inside `assets/screenshots/` and update paths above.*
+> 📸 *Add your screenshots inside `assets/images/` and update the file names or paths above if needed.*
 
----
 
 ## 🎥 Demo
 
