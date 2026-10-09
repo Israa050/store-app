@@ -124,9 +124,6 @@ It’s designed to be **easy to extend**, **test**, and **maintain**.
 **Israa Essa**  
 💼 Mobile Application Developer
 
-🌐 Portfolio: [https://www.linkedin.com/in/israa-essa-3b5644384]  
-
-💻 GitHub: [Israa050]  
 
 ---
 
